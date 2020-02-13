@@ -1,0 +1,29 @@
+
+using System;
+using McMaster.Extensions.CommandLineUtils;
+using System.Globalization;
+public class Program
+{
+    [Argument(0)]
+    public string Name { get; }
+
+
+            //[Argument(1)]
+            //public string LastName {
+            //    get;
+            //}
+
+     
+
+
+        private void OnExecute()
+    {
+        
+        string hurufBesar = Name.ToUpper();
+        string hurufKecil = Name.ToLower();
+        string hurufKapital = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Name.ToLower());
+        Console.WriteLine($"Ini fungsi toUpper {hurufBesar} ini fungsi toLower {hurufKecil} ini fungsi {hurufKapital}");
+    }
+
+    public static int Main(string[] args) => CommandLineApplication.Execute<Program>(args);
+}
